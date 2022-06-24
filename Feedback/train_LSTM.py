@@ -282,6 +282,8 @@ class FeedbackModel(nn.Module):
         # sequence_output = transformer_out.pooler_output
         x = self.lstm(x)
         x=self.classification_head(x)
+        x = torch.softmax(x, dim=-1)
+
         loss = 0
 
         if targets is not None:
