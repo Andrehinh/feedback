@@ -351,7 +351,7 @@ class custom_model(nn.model):
             transformer_out = self.transformer(ids, mask)
         # sequence_output = transformer_out.pooler_output
 
-        sequence_output = transformer_out.last_hidden_state  # embedding of all tokens in the last layer
+        emb = transformer_out.last_hidden_state  # embedding of all tokens in the last layer
         # sequence_output = self.attention(sequence_output)
         output = self.ln(emb)
         output = output.permute((0, 2, 1)).contiguous()
